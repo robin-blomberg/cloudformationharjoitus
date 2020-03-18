@@ -4,3 +4,8 @@ Description: Academy Demo CloudFormation
 Resources:
   RobinCloudBucket:
     Type: AWS::S3::Bucket
+
+  RobinSQS:
+    Type: AWS::SQS::Queue
+    Properties:
+      QueueName: RobinSQSQueue
