@@ -34,11 +34,14 @@ Resources:
       InstanceType:
         Ref: InstanceTypeParameter
 
-
-
-
   LoadBalancer:
     Type: AWS::ElasticLoadBalancingV2::LoadBalancer
     Properties:
       Scheme: internet-facing
       Subnets: [!Ref UsEastDefaultSubnetA, !Ref UsEastDefaultSubnetB]
+
+Outputs:
+
+  LoadBalnseDNS:
+    Description: ALB DNS adress
+    Value: !GetAtt LoadBalancer.DNSName
