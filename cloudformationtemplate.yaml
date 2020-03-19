@@ -10,6 +10,13 @@ Parameters:
     Default: t2.micro
     AllowedValues:
       - t2.micro
+  UsEastDefaultSubnetA:
+    Type: String
+    Default: subnet-3bfa1864
+  UsEastDefaultSubnetB:
+    Type: String
+    Default: subnet-cd799fab
+
 
 Resources:
   RobinCloudBucket:
@@ -27,19 +34,11 @@ Resources:
       InstanceType:
         Ref: InstanceTypeParameter
 
-  RobinEC2instance2:
-    Type: AWS::EC2::Instance
-    Properties:
-      AvailabilityZone: us-east-1b
-      ImageId: !Ref LatestAmiId
-      InstanceType:
-        Ref: InstanceTypeParameter
+
+
 
   LoadBalancer:
     Type: AWS::ElasticLoadBalancingV2::LoadBalancer
     Properties:
       Scheme: internet-facing
-      Subnets: [subnet-cd799fab, subnet-3bfa1864]
-
-
-
+      Subnets: [!Ref UsEastDefaultSubnetA, !Ref UsEastDefaultSubnetB]
