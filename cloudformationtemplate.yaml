@@ -26,3 +26,20 @@ Resources:
       ImageId: !Ref LatestAmiId
       InstanceType:
         Ref: InstanceTypeParameter
+
+  RobinEC2instance2:
+    Type: AWS::EC2::Instance
+    Properties:
+      AvailabilityZone: us-east-1b
+      ImageId: !Ref LatestAmiId
+      InstanceType:
+        Ref: InstanceTypeParameter
+
+  LoadBalancer:
+    Type: AWS::ElasticLoadBalancingV2::LoadBalancer
+    Properties:
+      Scheme: internet-facing
+      Subnets: [subnet-cd799fab, subnet-3bfa1864]
+
+
+
